@@ -10,10 +10,23 @@
 
 int	ft_strcmp(const char *s1, const char *s2);
 char	*ft_strndup(char const *src, size_t n);
+void	put_newline();
+void	set_signal_handler(int signo, void *func);
+
+int	shell_init()
+{
+	// SIGINTとSIGQUITを手当てする
+	set_signal_handler(SIGINT, put_newline);
+	set_signal_handler(SIGQUIT, SIG_IGN);
+	// environから環境変数を取得する
+	// ※OLDDIRは引き継がない
+	// カレントディレクトリを取得しPWDに格納する
+}
 
 int	main(int argc, char** argv) {
 	char	*input;
 
+	shell_init();
 	while (1) {
 		// readlineを利用して入力を取得
 		input = readline("minishell> ");
