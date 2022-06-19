@@ -23,7 +23,6 @@ t_info	g_info = {0};
 
 void	exec_builtin_env(t_alist *env_list)
 {
-	printf("start env\n");
 	while (env_list)
 	{
 		printf("%s=%s\n", env_list->key, env_list->value);
@@ -82,10 +81,11 @@ int	main(int argc, char** argv) {
 		if (ft_strcmp(input, "") != 0)
 			add_history(input);
 		// envコマンド簡易実装
-		if (ft_strcmp(input, "") != 0)
+		if (ft_strcmp(input, "env") == 0)
 			exec_builtin_env(g_info.env_list);
 		free(input);
 	}
 	free(input);
+	free_alist(g_info.env_list);
 	return (0);
 }
