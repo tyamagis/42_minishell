@@ -8,7 +8,7 @@
 
 #include "libft/libft.h"
 
-void	put_newline()
+void	put_newline(void)
 {
 	printf("\n");
 	rl_on_new_line();
@@ -20,7 +20,7 @@ void	put_newline()
 void	set_signal_handler(int signo, void *func)
 {
 	struct sigaction	sa;
-	
+
 	if (sigemptyset(&sa.sa_mask) == -1)
 	{
 		perror("sigemptyset");

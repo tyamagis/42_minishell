@@ -8,12 +8,13 @@
 
 #include "alist.h"
 
-int	ft_strcmp(const char *s1, const char *s2);
+int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strndup(char const *src, size_t n);
 
 void	free_alist(t_alist *head)
 {
 	t_alist	*next;
+
 	while (head)
 	{
 		next = head->next;
@@ -24,7 +25,7 @@ void	free_alist(t_alist *head)
 	}
 }
 
-t_alist *rm_alist(t_alist *head, const char *key)
+t_alist	*rm_alist(t_alist *head, const char *key)
 {
 	t_alist	*prev;
 	t_alist	*cur;
@@ -82,7 +83,7 @@ t_alist	*update_alist(t_alist *head, const char *key, const char *value)
 t_alist	*add_new_alist(t_alist *head, const char *key, const char *value)
 {
 	t_alist	*new;
-	t_alist *tail;
+	t_alist	*tail;
 
 	if (search_alist(head, key))
 		return (update_alist(head, key, value));

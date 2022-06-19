@@ -9,9 +9,9 @@
 #include "libft/libft.h"
 #include "alist.h"
 
-int	ft_strcmp(const char *s1, const char *s2);
+int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strndup(char const *src, size_t n);
-void	put_newline();
+void	put_newline(void);
 void	set_signal_handler(int signo, void *func);
 
 typedef struct s_info {
@@ -51,9 +51,9 @@ t_alist	*init_env_values(char **env)
 	return (head);
 }
 
-int	shell_init()
+int	shell_init(void)
 {
-	extern char **environ;
+	extern char	**environ;
 
 	// SIGINTとSIGQUITを手当てする
 	set_signal_handler(SIGINT, put_newline);
@@ -64,11 +64,13 @@ int	shell_init()
 	// カレントディレクトリを取得しPWDに格納する
 }
 
-int	main(int argc, char** argv) {
+int	main(int argc, char **argv)
+{
 	char	*input;
 
 	shell_init();
-	while (1) {
+	while (1)
+	{
 		// readlineを利用して入力を取得
 		input = readline("minishell> ");
 		// Ctrl-Dまたは"exit"で終了する
